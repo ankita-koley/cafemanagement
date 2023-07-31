@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout <<"***** Welcome to XYZ Hotel! *****" << endl;
+    char selection;
+    int s_plates = 0, d_plates = 0, t_plates = 0;
+    int srate = 20, drate = 30, trate = 10;
+
+    do {
+        cout << "Menu:" << endl;
+        cout << "1 samosa 20/-" << endl;
+        cout << "2 Dosa 30/-" << endl;
+        cout << "3 Tea 10/-" << endl;
+        cout <<"0.Exit" << endl; 
+        cout <<" Enter your choice: ";
+        cin >> selection;
+
+        if (selection == '1') {
+            cout << "Enter number of plates: ";
+            cin >> s_plates;
+        }
+        else if (selection == '2') {
+            cout << "Enter number of plates: ";
+            cin >> d_plates;
+        }
+        else if (selection == '3') { 
+            cout << "Enter number of plates: ";
+            cin >> t_plates;
+        }
+        else if (selection == '0') {
+            int grand_total = (srate * s_plates) + (drate * d_plates) + (trate * t_plates);
+            cout<<endl;
+
+            cout << "::Your Bill::" << endl;
+            cout << "Sr.No. | Item | Qty | Rate | Sub Total " << endl;
+            cout << "---------------------------------------" << endl;
+            if (s_plates > 0)
+                cout << "1 | Samosa | " << s_plates << " | " << srate << " | " << srate * s_plates  << "/-" << endl;
+            if (d_plates > 0)
+                cout << "2 | Dosa | " << d_plates << " | " << drate << " | " << drate * d_plates  << "/-" << endl;
+            if (t_plates > 0)
+                cout << "3 | Tea | " << t_plates << " | " << trate << " | " << trate * t_plates  << "/-" << endl;
+              
+            cout << "------------------------------------------" << endl;
+            cout << "          Grand total: " << grand_total << "/-"  << endl;
+            cout<<endl;
+            int cash;
+            cout << "Enter Your Cash: ";
+            cin >> cash;
+        
+        if (cash > grand_total) {
+            cout << "Return Amount: " << cash - grand_total << endl;
+            cout << endl;
+        }
+        else if (cash < grand_total) {
+            int more = grand_total - cash;
+            cout << "Please pay" << more << "Rs. more" << endl;
+            cout << "Enter Your Cash: ";
+            cin >> cash;
+            cout << endl;
+        }
+        else {
+             cout << "------T H A N K Y O U------" << endl;
+             cout << "**************************** VIST AGAIN *****************************"  << endl;
+             break;
+        }
+    
+        cout << "------T H A N K Y O U------" << endl;
+        cout << "***************************** VIST AGAIN *****************************"  << endl;  
+    }
+    else {
+        cout << "INVALID CHOICE PLEASE TRY AGAIN." << endl; 
+        cout << endl;
+    }
+} while (selection != '0');
+
+return 0;
+}
